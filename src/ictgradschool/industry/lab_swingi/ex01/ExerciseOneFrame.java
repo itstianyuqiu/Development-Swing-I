@@ -33,7 +33,7 @@ public class ExerciseOneFrame extends JFrame {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                ExerciseOneFrame frame = new ExerciseOneFrame("Exercise One: BMI", 100, 100, 650, 200);
+                ExerciseOneFrame frame = new ExerciseOneFrame("Exercise One: BMI", 100, 100, 590, 200);
                 frame.setVisible(true);
             }
         });
