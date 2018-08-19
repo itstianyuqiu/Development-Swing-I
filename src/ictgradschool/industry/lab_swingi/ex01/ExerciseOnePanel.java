@@ -27,10 +27,10 @@ public class ExerciseOnePanel extends JPanel implements ActionListener {
         // TODO Construct JTextFields and JButtons.
         // HINT: Declare them as instance variables so that other methods in this class (e.g. actionPerformed) can
         // also access them.
-        this.height = new JTextField(10);
-        this.weight = new JTextField(10);
-        this.bmi = new JTextField(10);
-        this.maxHealthyWeight = new JTextField(10);
+        this.height = new JTextField(15);
+        this.weight = new JTextField(15);
+        this.bmi = new JTextField(15);
+        this.maxHealthyWeight = new JTextField(15);
 
         this.calculateBMIButton = new JButton("Calculate BMI");
         this.calculateHealthyWeight = new JButton("Calculate Healthy Weight");
