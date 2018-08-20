@@ -13,13 +13,19 @@ import java.util.List;
  */
 public class ExerciseFivePanel extends JPanel implements MouseListener, MouseMotionListener {
 
-    /** A list of all shapes the user has drawn */
+    /**
+     * A list of all shapes the user has drawn
+     */
     private List<Rectangle> shapes = new ArrayList<>();
 
-    /** The location where the user pressed their mouse, if any */
+    /**
+     * The location where the user pressed their mouse, if any
+     */
     private Point mouseDownPoint1 = null;
 
-    /** The current location of the user's pressed mouse, if any */
+    /**
+     * The current location of the user's pressed mouse, if any
+     */
     private Point mouseDownPoint2 = null;
 
 
@@ -29,7 +35,14 @@ public class ExerciseFivePanel extends JPanel implements MouseListener, MouseMot
     public ExerciseFivePanel() {
         setBackground(Color.white);
 
+
+//        Rectangle rect1=new Rectangle(10,30,30,80,Color.red);
+//        Rectangle rect2=new Rectangle(30,70,80,80,Color.black);
+//        shapes.add(rect1);
+//        shapes.add(rect2);
         // TODO Add this panel as a mouse listener and mouse motion listener to itself.
+        this.addMouseListener(this);
+        this.addMouseMotionListener(this);
     }
 
     /**
@@ -38,7 +51,8 @@ public class ExerciseFivePanel extends JPanel implements MouseListener, MouseMot
      */
     @Override
     public void mousePressed(MouseEvent e) {
-
+        mouseDownPoint1 = new Point(e.getPoint());
+        repaint();
     }
 
     /**
@@ -48,17 +62,25 @@ public class ExerciseFivePanel extends JPanel implements MouseListener, MouseMot
      */
     @Override
     public void mouseReleased(MouseEvent e) {
-
+        mouseDownPoint2 = new Point(e.getPoint());
+        Rectangle rect = createRectangle(mouseDownPoint1, mouseDownPoint2, Color.red);
+        shapes.add(rect);
+        repaint();
     }
 
     /**
      * TODO When the user drags the mouse (moves it while it's pressed), record the current location of that mouse drag,
      * TODO and repaint the screen.
+     *
      * @param e
      */
     @Override
     public void mouseDragged(MouseEvent e) {
+        try {
+            shapes.remove(shapes.size() - 1);
+        }catch (Exception e1){
 
+        }
     }
 
     /**
@@ -70,25 +92,25 @@ public class ExerciseFivePanel extends JPanel implements MouseListener, MouseMot
         super.paintComponent(g);
 
         // Draw everything in the shapes list
-        for(Rectangle r : shapes) {
+        for (Rectangle r : shapes) {
             r.draw(g);
         }
 
         // TODO If we're currently dragging out a new rectangle, draw its current size in red.
         // Hint: You can just use the createRectangle method, and draw the rectangle that you get back from it.
-
+        shapes.get(shapes.size()-1).setColor(Color.BLACK);
     }
 
     /**
      * Creates a {@link Rectangle}, given the two points. This method is smart enough to deal with any two valid points,
      * regardless of where one is in relation to the other.
      *
-     * @param p1 the first point
-     * @param p2 the second point
+     * @param p1    the first point
+     * @param p2    the second point
      * @param color the color
      * @return a {@link Rectangle}
      */
-    private  Rectangle createRectangle(Point p1, Point p2, Color color) {
+    private Rectangle createRectangle(Point p1, Point p2, Color color) {
         int x1 = (int) p1.getX();
         int y1 = (int) p1.getY();
         int x2 = (int) p2.getX();
@@ -102,19 +124,31 @@ public class ExerciseFivePanel extends JPanel implements MouseListener, MouseMot
         return new Rectangle(x, y, width, height, color);
     }
 
-    /** Unused but required by MouseListener interface. */
+    /**
+     * Unused but required by MouseListener interface.
+     */
     @Override
-    public void mouseEntered(MouseEvent e) { }
+    public void mouseEntered(MouseEvent e) {
+    }
 
-    /** Unused but required by MouseListener interface. */
+    /**
+     * Unused but required by MouseListener interface.
+     */
     @Override
-    public void mouseExited(MouseEvent e) { }
+    public void mouseExited(MouseEvent e) {
+    }
 
-    /** Unused but required by MouseListener interface. */
+    /**
+     * Unused but required by MouseListener interface.
+     */
     @Override
-    public void mouseClicked(MouseEvent e) { }
+    public void mouseClicked(MouseEvent e) {
+    }
 
-    /** Unused but required by MouseMotionListener interface. */
+    /**
+     * Unused but required by MouseMotionListener interface.
+     */
     @Override
-    public void mouseMoved(MouseEvent e) { }
+    public void mouseMoved(MouseEvent e) {
+    }
 }
