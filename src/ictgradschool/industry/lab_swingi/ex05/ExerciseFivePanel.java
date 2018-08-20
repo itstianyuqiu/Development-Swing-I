@@ -79,7 +79,7 @@ public class ExerciseFivePanel extends JPanel implements MouseListener, MouseMot
         try {
             shapes.remove(shapes.size() - 1);
         }catch (Exception e1){
-
+            e1.printStackTrace();
         }
     }
 
