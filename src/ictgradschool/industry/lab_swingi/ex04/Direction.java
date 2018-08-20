@@ -5,5 +5,5 @@ package ictgradschool.industry.lab_swingi.ex04;
  */
 public enum Direction {
 
-    Up, Down, Left, Right;
+    Up, Down, Left, Right,Stop;
 }

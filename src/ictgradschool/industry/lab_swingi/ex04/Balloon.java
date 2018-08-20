@@ -61,8 +61,11 @@ public class Balloon {
             x = x - speed;
         } else if (direction == Direction.Down) {
             y = y + speed;
-        } else {
+        } else if (direction == Direction.Up) {
             y = y - speed;
+        } else if (direction==Direction.Stop){
+            x = x;
+            y = y;
         }
 
     }
